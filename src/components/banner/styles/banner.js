@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 
 export const Background = styled.div`
-    background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/bcd713c9-291e-4186-a275-117b387eaaf2/c59b9f2f-08e2-4030-818f-a5d153cc855c/CA-en-20201019-popsignuptwoweeks-perspective_alpha_website_small.jpg');
+    background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/bcd713c9-291e-4186-a275-117b387eaaf2/c59b9f2f-08e2-4030-818f-a5d153cc855c/CA-en-20201019-popsignuptwoweeks-perspective_alpha_website_large.jpg');
     height: 100%;
     border-bottom: 8px solid #222;
 

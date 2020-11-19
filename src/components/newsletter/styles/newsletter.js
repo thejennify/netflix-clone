@@ -92,7 +92,4 @@ export const Button = styled.button`
         min-height: 40px;
         border-radius: 2px;
       }
-    :hover{
-        border: blue;
-      }
 `;
