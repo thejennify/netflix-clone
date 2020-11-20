@@ -79,6 +79,13 @@ export const Button = styled.button`
     outline: none;
     font-size: 1.6em;
     font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+      background-image: #f40612;
+    }
+
+
     img {
       filter: brightness(0) invert(1);
       width: 12px;

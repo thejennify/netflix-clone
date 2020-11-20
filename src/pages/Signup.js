@@ -1,10 +1,10 @@
 import React from 'react';
-import SigninFormContainer from '../containers/signin';
+import SignupFormContainer from '../containers/signup';
 
 export default function SignInPage() {
     return (
         <div>
-           <SigninFormContainer />
+           <SignupFormContainer />
         </div>
     )
 }

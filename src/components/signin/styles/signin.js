@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { Link as RouterLink} from 'react-router-dom';
 
 export const Background = styled.div`
     width: 100vw;
@@ -105,12 +106,21 @@ export const Section = styled.div.attrs(props => ({
     justify-content: space-between;
 `;
 
-export const Link = styled.a.attrs( props => ({
+export const Link = styled(RouterLink, props => ({
     color:  props.color,
     fontSize: props.fontSize,
+    textDecoration: props.textDecoration,
 
 }))`
     font-size: ${props => props.fontSize};
     color: ${props => props.color};
-    text-decoration: none;
+    text-decoration: ${props => props.textDecoration};
+`;
+
+export const Error = styled.div`
+    background-color: #ffa00a;
+    color: white;
+    padding: 1em;
+    border-radius: 5px;
+    margin-bottom: 1em;
 `;

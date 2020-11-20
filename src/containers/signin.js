@@ -2,31 +2,42 @@ import React, {useState} from 'react';
 import { Signin } from '../components';
 
 
-export default function FormContainer() {
+export default function SigninFormContainer() {
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
-    const handleChange = (e) => {
-        const value = e.target.value;
-        console.log(value);
-        setEmail(value);
-        console.log(email);
-        
+const [error, setError] = useState('');
+
+
+
+    const signinUser = e => {
+        e.preventDefault();
+        alert(`email is:${email}, password is:${password}`)
     }
-    const submitForm = e => {
-        alert("Form submited")
-    }
+    
     return (
         <Signin>
             <Signin.Container>
                 <Signin.Title>Sign In</Signin.Title>
-                <Signin.Form>
-                    <Signin.Input type="text" placeholder="Email or phone number" height="48px" 
+                {error && 
+                    <Signin.Error>
+                        <strong>Incorrect password.</strong> Please try again or you can <Signin.Link 
+                        color="#fff" textDecoration="underline">
+                        reset your password
+                        </Signin.Link>
+                    </Signin.Error>}
+                <Signin.Form onSubmit={signinUser}method="post">
+                    <Signin.Input  
+                    height="48px" 
                     width="100%"
-                    onChange={ handleChange}/>
+                    type="text"
+                    placeholder="Email or phone number" 
+                    value={email}
+                    onChange={({target}) => setEmail(target.value)}/>
                     <Signin.Input type="password" placeholder="Password" height="48px" 
                     width="100%"
-                    onChange={ handleChange}/>
-                    <Signin.Button onClick={submitForm}>Sign In</Signin.Button>
+                    value={password}
+                    onChange={({target}) => setPassword(target.value)}/>
+                    <Signin.Button >Sign In</Signin.Button>
                     <Signin.Section color="b3b3b3" fontSize="13px">
                         <div>
                             <Signin.Input type="checkbox" height="1em" name="remember me"/>

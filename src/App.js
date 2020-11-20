@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Homepage from './pages/Homepage';
 import SigninPage from './pages/Signin';
+import SignupPage from './pages/Signup';
 
  
 export default function App() {
@@ -10,6 +11,7 @@ export default function App() {
     <Router>
       <Route path="/" exact component={Homepage} />
       <Route path="/signin" exact component={SigninPage} />
+      <Route path="/signup" exact component={SignupPage} />
     </Router>
   );
 }
