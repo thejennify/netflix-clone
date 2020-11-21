@@ -1,5 +1,5 @@
 import React from 'react';
-import { Background, Container, Title, Form, Input, Button, Label, Paragraph, Section, Link, Error } from './styles/signin';
+import { Background, Container, Title, Form, Input, Button, Label, Paragraph, Section, Link, ErrorMessage, ErrorText } from './styles/signin';
 
 export default function Signin( {children, ...props} ) {
     return (
@@ -41,6 +41,10 @@ Signin.Paragraph = function SigninParagraph( {children, ...props}) {
 Signin.Link = function SinginLink({children, ...props}) {
     return <Link{...props}> {children} </Link>
 }
-Signin.Error = function SinginError( { children , ...props}) {
-    return <Error{...props}> { children } </Error>
+Signin.ErrorMessage = function SinginErrorMessage( { children , ...props}) {
+    return <ErrorMessage{...props}> { children } </ErrorMessage>
+}
+
+Signin.ErrorText = function SinginErrorText( { children , ...props}) {
+    return <ErrorText{...props}> { children } </ErrorText>
 }

@@ -42,27 +42,23 @@ export const Form = styled.form`
 
 `;
 export const Input = styled.input.attrs( props => ({
-    type: props.type,
-    placeholder: props.placeholder,
-    name: props.name,
+    borderBottom: props.borderBottom,
+    marginBottom: props.marginBottom,
+
 }))`
     background-color: #353535;
     padding: 0 1em; 
-    height: ${props => props.height};
+    height: 48px;
     border: none;
-    width: ${props => props.width};
+    width: 100%;
     outline: none;
     border: none;
     font-size: 1em;
     box-sizing: border-box;
-    margin-bottom: 1.5em;
+    margin-bottom: ${props => props.marginBottom};
     border-radius: 5px;
+    border-bottom: ${props => props.borderBottom};
     color: #fff;
-
-
-    @media (max-width: 600px) {
-        margin-bottom: 1em;
-    }
     
 `;
 
@@ -117,10 +113,15 @@ export const Link = styled(RouterLink, props => ({
     text-decoration: ${props => props.textDecoration};
 `;
 
-export const Error = styled.div`
-    background-color: #ffa00a;
+export const ErrorMessage = styled.div`
+    background-color: #e87c03;
     color: white;
     padding: 1em;
     border-radius: 5px;
     margin-bottom: 1em;
+`;
+
+export const ErrorText = styled.p`
+    color: #e87c03;
+    font-size: 13px;
 `;
