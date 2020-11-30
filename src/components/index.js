@@ -3,4 +3,4 @@ export { default as Footer } from  './footer';
 export { default as Faq } from  './faq';
 export { default as Newsletter } from './newsletter';
 export { default as Banner } from './banner';
-export { default as Signin }  from './signin'
+export { default as AuthForm }  from './authentication-form';

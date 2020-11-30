@@ -3,8 +3,6 @@ import SigninFormContainer from '../containers/signin';
 
 export default function SignInPage() {
     return (
-        <div>
-           <SigninFormContainer />
-        </div>
+        <SigninFormContainer />
     )
 }

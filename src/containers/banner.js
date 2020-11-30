@@ -1,16 +1,20 @@
 import React from 'react';
 import { Banner } from '../components/';
 import  NewsletterContainer  from './newsletter';
+import { useHistory } from "react-router-dom";
+
 
 export  function BannerContainer() {
-    const signIn = () => {
-        alert("button has been clicked")
+    let history = useHistory();
+      
+    function routeToSignin() {
+        history.push("/signin");
     }
 
     return (
         <Banner>
             <Banner.Navbar> 
-                <Banner.Button onClick={signIn}> sign in </Banner.Button> 
+                <Banner.Button onClick={routeToSignin}> sign in </Banner.Button> 
             </Banner.Navbar>
             <Banner.Inner>
                 <Banner.Title> 100% entertainment.

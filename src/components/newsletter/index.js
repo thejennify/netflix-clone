@@ -1,16 +1,12 @@
 import React from 'react';
-import { Item, Title, Button, Input, Div} from './styles/newsletter';
+import { Item, Title, Button, Input, Form} from './styles/newsletter';
 
 export default function Newsletter({children, ...props}) {
     return (
-        <form>
+        <Item>
             {children}
-        </form>
+        </Item>
     );
-}
-
-Newsletter.Item = function NewsletterItem({ children, ...props }) {
-    return <Item {...props}> {children} </Item>
 }
 
 Newsletter.Title = function NewsletterTitle({ children, ...props }) {
@@ -21,8 +17,8 @@ Newsletter.Input = function NewsletterInput({ ...props }) {
     return <Input {...props} placeholder="Email address" />
 }
 
-Newsletter.Div = function NewsletterDiv({ ...props}) {
-    return <Div {...props}></Div>
+Newsletter.Form = function NewsletterForm({children, ...props}) {
+    return <Form {...props}>{children}</Form>
 }
 
 Newsletter.Button = function NewsletterButton({ children, ...props }) {

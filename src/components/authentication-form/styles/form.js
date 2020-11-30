@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro';
-import { Link as RouterLink} from 'react-router-dom';
 
 export const Background = styled.div`
     width: 100vw;
@@ -12,8 +11,6 @@ export const Background = styled.div`
         align-item: center;
         flex-direction: column;
       }
-
-
 `;
 
 export const Container = styled.div`
@@ -58,8 +55,7 @@ export const Input = styled.input.attrs( props => ({
     margin-bottom: ${props => props.marginBottom};
     border-radius: 5px;
     border-bottom: ${props => props.borderBottom};
-    color: #fff;
-    
+    color: #fff; 
 `;
 
 export const Button = styled.button`
@@ -85,24 +81,9 @@ font-weight: 700;
     font-size: 16px;
   }
 `;
-export const Label = styled.label.attrs( props =>({
-    for: props.for,
-}))
-``;
 export const Paragraph = styled.p``;
 
-export const Section = styled.div.attrs(props => ({
-    color: props.color,
-    fontSize: props.fontSize
-}))`
-    display: flex;
-    color: ${props => props.color};
-    font-size: ${props => props.fontSize}
-    align-items: center;
-    justify-content: space-between;
-`;
-
-export const Link = styled(RouterLink, props => ({
+export const Link = styled.a.attrs( props => ({
     color:  props.color,
     fontSize: props.fontSize,
     textDecoration: props.textDecoration,

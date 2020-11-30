@@ -51,7 +51,7 @@ export const Input = styled.input.attrs( props => ({
     
 `;
  
-export const Div = styled.div`
+export const Form = styled.form`
     align-items: center;
     margin: 0;
     padding: 0;

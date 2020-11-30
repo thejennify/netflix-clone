@@ -1,50 +1,99 @@
-import React, {useState} from 'react'
-import { Signin } from '../components';
+import React, { useState, useContext } from 'react'
+import { AuthForm } from '../components';
+import { validateEmail, validatePassword } from '../lib/validation';
+import { FirebaseContext } from "../context/firebase";
+import {useHistory} from 'react-router-dom';
+import { routes } from '../routes';
+
 
 export default function SignupFormContainer() {
-    const [email, setEmail] = useState('');
+
+    const { firebase } = useContext(FirebaseContext);
+    const [email, setEmail] = useState('')
+    const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [invalidPassword, setInvalidPassword] = useState(false);
+    const [invalidEmail, setInvalidEmail] = useState(false);
 
-    const handleChange = (e) => {
-        const value = e.target.value;
-        console.log(value);
-        setEmail(value);
+
+    let history = useHistory();
+
+    const routeToSigninPage = () => {
+        history.push(routes.signin);
+    }
+
+    const signupUser = (e) => {
+        e.preventDefault();
         console.log(email);
-        
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then( res => res.user.updateProfile({
+                displayName: name,
+                photoUrl: Math.floor((Math.random() * 5)), 
+            }).then(() => {
+                history.push(routes.profile)
+            })
+        )
+        .catch( error => {
+            const errorCode = error.code;
+            const errorMessage = error.message
+            console.log(errorCode);
+            setError(errorMessage);
+           
+        })
     }
-    const submitForm = e => {
-        alert("Form submited")
+    const validateForm = () => {
+        const validEmail = validateEmail(email);
+        const validPassword  = validatePassword(password);
+        !validEmail ? setInvalidEmail(true) : setInvalidEmail(false);
+        !validPassword ? setInvalidPassword(true) : setInvalidPassword(false);
     }
-    return (
-        <Signin>
-            <Signin.Container>
-                <Signin.Title>Sign Up</Signin.Title>
-                <Signin.Form method="post">
-                    <Signin.Input type="text" placeholder="Name" height="48px" 
-                    width="100%"
-                    onChange={ handleChange}/>
-                    <Signin.Input type="password" placeholder="Password" height="48px" 
-                    width="100%"
-                    onChange={ handleChange}/>
-                    <Signin.Button onClick={submitForm}>Sign Up</Signin.Button>
-                    <Signin.Section color="b3b3b3" fontSize="13px">
-                        <div>
-                            <Signin.Input type="checkbox" height="1em" name="remember me"/>
-                            <label htmlFor="remember me"> Remember me </label>
-                        </div>
-                        <p>Need help</p>
-                    </Signin.Section>
-                    <Signin.Paragraph>
-                        Login with Facebook
-                    </Signin.Paragraph>
-                    <Signin.Paragraph>
-                        Already have an account?<Signin.Link color="#fff">Sign in Now</Signin.Link>
-                    </Signin.Paragraph>
-                    <Signin.Paragraph>This page is protected by Google reCAPTCHA to ensure you're not a bot.<Signin.Link color="#0071eb">Learn more</Signin.Link></Signin.Paragraph>
 
-                </Signin.Form>
-            </Signin.Container>
-        </Signin>
+    return (
+        <AuthForm>
+            <AuthForm.Container>
+                <AuthForm.Title> Sign Up </AuthForm.Title>
+                <AuthForm.Form method="post">
+                {error && <AuthForm.ErrorMessage> { error }</AuthForm.ErrorMessage>}
+                <AuthForm.Input 
+                    type="text"
+                    placeholder="Name"
+                    value={name}
+                    marginBottom= "1.5em"
+                    onChange={({target}) => setName(target.value)}/>
+                <AuthForm.Input 
+                    type="email"
+                    placeholder="Email address"
+                    value={email} 
+                    borderBottom={ invalidEmail ? ".2em solid #e87c03": ""}
+                    marginBottom={ invalidEmail ? "0" : "1.5em"}
+                    onMouseOut={validateForm}
+                    onChange={({target}) => setEmail(target.value)}/>
+                    { invalidEmail && 
+                        <AuthForm.ErrorText>
+                        Please enter a valid email
+                        </AuthForm.ErrorText> }
+                <AuthForm.Input 
+                    type="password" 
+                    placeholder="Password"
+                    value={password} 
+                    borderBottom={ invalidEmail ? ".2em solid #e87c03": ""}
+                    marginBottom={ invalidEmail ? "0" : "1.5em"}
+                    onChange={({target}) => setPassword(target.value)}
+                    onMouseOut={validateForm}/>
+                    {invalidPassword && 
+                        <AuthForm.ErrorText>
+                        Your password must conatain between 4 and 60 characters
+                        </AuthForm.ErrorText>}
+                    <AuthForm.Button onClick={signupUser}> Sign Up </AuthForm.Button>
+                    <AuthForm.Paragraph>
+                        Already have an account?<AuthForm.Link color="#fff" onClick={routeToSigninPage}>Sign in Now</AuthForm.Link>
+                    </AuthForm.Paragraph>
+                    <AuthForm.Paragraph> This page is protected by Google reCAPTCHA to ensure you're not a bot.
+                    </AuthForm.Paragraph>
+                </AuthForm.Form>
+            </AuthForm.Container>
+        </AuthForm>
     )
 }
 
