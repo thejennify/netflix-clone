@@ -1,10 +1,14 @@
 import React from 'react';
-import { Background, Container, Title, Form, Input, Button, Paragraph, Link, ErrorMessage, ErrorText } from './styles/form';
+import { Background, Overlay, Inner, Container, Title, Form, Input, Button, Paragraph, Link, ErrorMessage, ErrorText } from './styles/form';
 
 export default function AuthForm( {children, ...props} ) {
     return (
         <Background>
-            {children}
+            <Overlay>
+                <Inner>
+                {children}
+                </Inner>
+            </Overlay>
         </Background>
     )
 }

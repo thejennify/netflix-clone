@@ -13,6 +13,21 @@ export const Background = styled.div`
       }
 `;
 
+export const Overlay = styled.div`
+    background-color: rgba(0,0,0, .6);
+    height: 100%;
+`;
+
+export const Inner = styled.div`
+  display: flex;
+  padding: 2em;
+  flex-direction: column;
+  margin: auto;
+  @media (max-width: 500px) {
+    padding: 5em 1em;
+}
+`;
+
 export const Container = styled.div`
     width: 350px;
     background-color: rgba(0,0,0, .80);

@@ -1,9 +1,11 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext} from 'react';
 import { AuthForm } from '../components';
 import { validateEmail, validatePassword } from '../lib/validation';
 import { FirebaseContext } from "../context/firebase";
 import { useHistory } from 'react-router-dom';
 import { routes } from '../routes';
+import { Navbar } from '../components';
+
 
 export default function SigninFormContainer() {
 
@@ -51,6 +53,7 @@ export default function SigninFormContainer() {
   
     return (
         <AuthForm>
+            <Navbar/>
              <AuthForm.Container>
                 <AuthForm.Title> Sign In </AuthForm.Title>
                 {error && <AuthForm.ErrorMessage> { error }</AuthForm.ErrorMessage>}

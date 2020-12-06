@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Homepage from './pages/Homepage';
 import SigninPage from './pages/Signin';
 import SignupPage from './pages/Signup';
-import ProfilePage from './pages/Profile';
+import ProfilesPage from './pages/Profiles';
+import ContentPage from './pages/Content';
 import PageNotFound from './pages/NoMatchPage';
-import { RedirectUser, PrivateRoute } from './utils/routes';
+import { RedirectUser, PrivateRoute, ProtectedRoute } from './utils/routes';
 import { useAuthListener } from './hooks';
 import { routes } from './routes';
 
@@ -16,10 +17,10 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact>
+        <Route path={routes.home} exact>
           <RedirectUser 
             user={user}
-            loggedInPath='/profile'
+            loggedInPath={routes.profile}
             >
             <Homepage />
           </RedirectUser>
@@ -27,14 +28,17 @@ export default function App() {
           <Route path={routes.signin} exact>
               <RedirectUser 
               user={user} 
-              loggedInPath='/profile'
+              loggedInPath={routes.profile}
               >
                 <SigninPage />
               </RedirectUser>
           </Route>
         <Route path={routes.signup} exact component={SignupPage} />
         <PrivateRoute user={user} path={routes.profile}>
-          <ProfilePage/>
+          <ProfilesPage />
+        </PrivateRoute>
+        <PrivateRoute user={user} path={routes.content}>
+          <ContentPage />
         </PrivateRoute>
         <Route path="*" componet={PageNotFound} />
       </Switch>

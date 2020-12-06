@@ -37,5 +37,4 @@ export const PrivateRoute = ({user, children, ...rest}) => {
     }
   />
 )
-
 }
