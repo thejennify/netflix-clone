@@ -12,14 +12,17 @@ export default function Header({ children, ...props }) {
 Header.DesciptionContainer = function DesciptionContainer({children, ...props}) {
     return <DescriptionContainer {...props}> {children} </DescriptionContainer>
 }
+
 Header.Group = function HeaderTitle({ children, ...props}) {
-    return <Group {...props}>{children}</Group>
+    return <Group {...props}> {children} </Group>
 }
+
 Header.Title = function HeaderTitle({ children, ...props}) {
-    return <Title {...props}>{children}</Title>
+    return <Title {...props}> {children} </Title>
 }
+
 Header.Subtitle = function HeaderSubtitle({ children, ...props}) {
-    return <Subtitle {...props}>{children}</Subtitle>
+    return <Subtitle {...props}> {children} </Subtitle>
 }
 Header.Button = function HeaderButton({ children, ...props}) {
     return <Button {...props}> {children} </Button>

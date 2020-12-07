@@ -6,7 +6,7 @@ import SignupPage from './pages/Signup';
 import ProfilesPage from './pages/Profiles';
 import ContentPage from './pages/Content';
 import PageNotFound from './pages/NoMatchPage';
-import { RedirectUser, PrivateRoute, ProtectedRoute } from './utils/routes';
+import { RedirectUser, PrivateRoute } from './utils/routes';
 import { useAuthListener } from './hooks';
 import { routes } from './routes';
 

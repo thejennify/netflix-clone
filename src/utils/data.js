@@ -6,29 +6,24 @@ export default function dataSelection(  movies, series ) {
             movies: [
                 {
                     title: 'thriller',
-                    data: movies.filter( movie => movie.genre === 'thriller' ? console.log(movie) : null)
+                    data: movies.filter( movie => movie.genre === 'thriller')
 
                 },
                 {
                     title: 'suspense',
-                    data: movies.filter( movie => movie.genre === 'suspense' ? movie : null)
+                    data: movies.filter( movie => movie.genre === 'suspense')
                 },
                  {
                     title: 'drama',
-                    data: movies.filter( movie => movie.genre === 'drama' ? movie : null)
+                    data: movies.filter( movie => movie.genre === 'drama')
                 },
                 {
                     title: 'children',
-                    data: movies.filter( movie => movie.genre === 'children' ? movie : null)
+                    data: movies.filter( movie => movie.genre === 'children' )
                 },
                 {
                     title: 'romance',
                     data: movies.filter( movie => movie.genre === 'romance')
-                },
-                {
-                    title: 'documentaries',
-                    data: movies.filter( movie => movie.genre === 'documentaries')
-
                 },
             ],
             series: [

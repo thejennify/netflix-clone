@@ -6,13 +6,15 @@ export const Background = styled.section`
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 0;
+    box-shadow: 0px 0px 100px 0px #000;
     @media (max-width: 600px) {
         height: 20vh;
     }
+
 `;
 
 export const DescriptionContainer = styled.div`
-    padding: 2em;
+    padding: 3em;
     max-width: 50vw;
     @media (max-width: 600px) {
         display: none;
@@ -35,16 +37,17 @@ export const Subtitle = styled.p`
 `;
 
 export const Button = styled.button`
-backgorund-color: ${({primary}) =>  (primary ? '#fff' : '#c4c4c4')};
-color: #222;
-border: none;
-justify-content: space-between;
-height: 40px;
-display: flex;
--webkit-box-align: center;
-align-items: center;
-border-radius: 2px;
-font-size: 16px;
-font-weight: 700;
-margin-right: 2em;
+    background-color: ${({primary}) =>  ( primary ? '#fff' : '#c4c4c4')};
+    color: #222;
+    padding: 1em;
+    border: none;
+    justify-content: space-between;
+    height: 40px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 2em;
 `;

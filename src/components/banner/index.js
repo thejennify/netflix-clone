@@ -19,11 +19,10 @@ Banner.Inner = function BannerInner({ children, ...props}) {
     )
 }
 
-Banner.Title = function BannerTitle({
-    children, ...props
-}) {
+Banner.Title = function BannerTitle({ children, ...props }) {
     return <Title {...props}> {children} </Title>
 }
+
 Banner.SubTitle = function BannerSubTitle({ children, ...props }) {
     return <SubTitle {...props}> {children}</SubTitle>
 

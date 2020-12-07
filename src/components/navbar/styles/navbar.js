@@ -4,7 +4,7 @@ export const Wrapper = styled.nav`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: 2em;
+    padding: 1em 3em;
 
     @media (max-width: 600px) {
         padding: .5em;
@@ -104,6 +104,7 @@ export const DropdownIcon = styled.img`
     color: #fff;
     width: 18px;
 `;
+
 export const Icon = styled.img`
     color: #fff;
     width: 18px;
@@ -143,8 +144,11 @@ export const List = styled.li`
     margin-left: 1em;
 
 `;
+
 export const Link = styled.a`
     text-decoration: none;
+    font-weight: ${({active}) =>  ( active ? '600' : '400')};
+    
     :hover {
         color: #808080;
     }
