@@ -5,9 +5,11 @@ export const Wrapper = styled.nav`
     display: flex;
     justify-content: space-between;
     padding: 1em 3em;
+    z-index: 10000;
+    position: scroll;
 
     @media (max-width: 600px) {
-        padding: .5em;
+        padding: 1em;
     }
 `;
 
@@ -30,7 +32,7 @@ export const Logo = styled.img`
     float: left;
     width: 7em;
     @media (max-width: 600px) {
-        width: 5em;
+        width: 3.5em;
     }
 ;`;
 
@@ -70,7 +72,8 @@ export const SearchBar = styled.input`
 export const SearchIcon = styled.img`
     color: #fff;
     width: 25px;
-    margin-left: ${({active}) =>  (active ? '-10px' : '10px')};
+    cursor: pointer;
+
     :hover > ${SearchBar} {
         display: block;
     }
@@ -80,12 +83,14 @@ export const Select = styled.a`
     color: #fff;
     display: flex;
     justify-content: column;
+    cursor: pointer;
+
     &:hover {
-        color: ##808080;
+        color: #f2f2f2;
     }
 `;
 
-export const Dropdown = styled.div`
+export const Dropdown = styled.aside`
     background-color: rgba(0, 0, 0, .9);
     padding: 1em;
     color: #fff;
@@ -96,6 +101,7 @@ export const Dropdown = styled.div`
     position: absolute;
     line-height: 2.5em;
     display: none;
+    cursor: pointer;
 
 `;
 
@@ -103,16 +109,19 @@ export const DropdownIcon = styled.img`
     transform: rotate(90deg);
     color: #fff;
     width: 18px;
+    cursor: pointer;
 `;
 
 export const Icon = styled.img`
     color: #fff;
     width: 18px;
+    cursor: pointer;
 `;
 
 export const ProfilePicture = styled.img`
     width: 2em;
     border-radius: 4px;
+    cursor: pointer;
 
 `;
 
@@ -141,6 +150,7 @@ export const LinkModal = styled.div`
 export const List = styled.li`
     color: #fff;
     display: inline;
+    text-align: center;
     margin-left: 1em;
 
 `;
@@ -148,9 +158,10 @@ export const List = styled.li`
 export const Link = styled.a`
     text-decoration: none;
     font-weight: ${({active}) =>  ( active ? '600' : '400')};
+    cursor: pointer;
     
     :hover {
-        color: #808080;
+        color: #d2d2d2;
     }
     
 `;

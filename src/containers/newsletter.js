@@ -16,7 +16,6 @@ export default function NewsletterContainer({value}) {
     const signup = (e) => {
         e.preventDefault()
         const validEmail = validateEmail(email);
-        //check if email is valid format, if it is, save email to context and route to sign up page to complete the sign up
         validEmail ? routeToSignupPage() : setError(true)
         
     }

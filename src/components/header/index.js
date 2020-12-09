@@ -1,5 +1,6 @@
 import React from 'react';
-import { Background, DescriptionContainer, Group, Title, Subtitle, Button } from './styles/header';
+import { Background, Overlay, DescriptionContainer, Group, Title, Subtitle, Button } from './styles/header';
+
 
 export default function Header({ children, ...props }) {
     return (
@@ -9,7 +10,11 @@ export default function Header({ children, ...props }) {
     )
 }
 
-Header.DesciptionContainer = function DesciptionContainer({children, ...props}) {
+Header.Overlay = function HeaderOverlay({children, ...props}) {
+    return <Overlay {...props}> {children} </Overlay>
+}
+
+Header.DesciptionContainer = function HeaderDesciptionContainer({children, ...props}) {
     return <DescriptionContainer {...props}> {children} </DescriptionContainer>
 }
 

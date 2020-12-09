@@ -1,17 +1,16 @@
 import React, { useState, useContext, createContext } from 'react';
-import { Wrapper, Category, Row, Container, Card, Image, MetaContainer, IconRow, Icon , MetaRow, MetaData, Mood } from './styles/sliders';
+import { Wrapper, Category, Row, Container, Card, Image, MetaContainer, IconRow, Icon , Modal, ImageModal, MetaRow, Metadata, Mood } from './styles/sliders';
 
 export const SliderContext = createContext();
 
 export default function Slider({children, ...props}) {
     return (
-        <SliderContext.Provider>
             <Wrapper {...props}>
                 {children}
             </Wrapper>
-        </SliderContext.Provider>
     )
 }
+
 
 Slider.Category = function SliderCategory({children, ...props}) {
     return <Category {...props}> { children } </Category>
@@ -32,8 +31,9 @@ Slider.Image = function SliderImage({ children, ...props}) {
     return <Image {...props} /> 
 }
 
-Slider.MetaContainer = function SliderMetaContainer({ children, ...props}) {
-    return <MetaContainer {...props} >  {children} </MetaContainer>
+Slider.MetaContainer = function SliderMetaContainer({ 
+children, ...props}) {
+    return <MetaContainer {...props}>  {children} </MetaContainer>
 }
 
 Slider.IconRow = function SliderIconRow({ children, ...props}) {
@@ -44,14 +44,23 @@ Slider.Icon = function SliderIcon({ children, ...props}) {
     return <Icon {...props} /> 
 }
 
-Slider.MetaRow = function MetaRow({ children, ...props}) {
+Slider.Modal = function SliderModal({ children, ...props}) {
+    return <Modal {...props} >  {children} </Modal>
+}
+
+Slider.ImageModal = function SliderImageModal({ children, ...props}) {
+    return <ImageModal {...props} />  
+}
+
+
+Slider.MetaRow = function SliderMetaRow({ children, ...props}) {
     return <MetaRow {...props} >  {children} </MetaRow>
 }
 
-Slider.MetaData = function MetaData({ children, ...props}) {
-    return <MetaData {...props} >  {children} </MetaData>
+Slider.Metadata = function SliderMetadata({ children, ...props}) {
+    return <Metadata {...props} >  {children} </Metadata>
 }
 
-Slider.Mood = function Mood({ children, ...props}) {
+Slider.Mood = function SliderMood({ children, ...props}) {
     return <Mood {...props} >  {children} </Mood>
 }

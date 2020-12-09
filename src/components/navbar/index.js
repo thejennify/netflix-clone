@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { Background } from '../banner/styles/banner';
 import { Wrapper, Container, Logo, Button, Select, Dropdown, SearchBar, ProfilePicture, DropdownIcon, Icon, SearchIcon, LinkModal, LinkWrapper, List, Link } from './styles/navbar';
 const logo = 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg';
 

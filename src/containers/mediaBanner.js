@@ -4,11 +4,10 @@ import { Navbar } from '../components';
 import { useAuthListener } from '../hooks';
 import { FirebaseContext } from '../context/firebase';
 
-
 export default function MediaBanner() {
 
     const [navbar, setNavbar] = useState(null);
-    const [search, setSearch] = useState('');
+    const [searchBar, setSearchBar] = useState('');
     const [category, setCategory] = useState('');
     const [startSearch, setStartSearch] = useState('');
     const { user } = useAuthListener();
@@ -17,12 +16,14 @@ export default function MediaBanner() {
     let photoURL = user.photoURL;
     const profilePicture = `/images/users/${photoURL}.png`;
 
+
     const logout = () => {
          firebase.auth().signOut()
     }
 
     return (
-        <Header>
+        <Header hide={ category }>
+            <Header.Overlay>
             <Navbar>
                 <Navbar.LinkWrapper>
                 <Navbar.Container>
@@ -49,14 +50,15 @@ export default function MediaBanner() {
                 <Navbar.Container>
                     <Navbar.List>
                     <Navbar.SearchIcon 
-                        active={startSearch} 
-                        src='/images/icons/search.png' 
-                        onClick={() => setStartSearch(startSearch => !startSearch)} value={startSearch}
+                        active={searchBar} 
+                        src='/images/icons/search.svg' 
+                        onClick={() => setStartSearch(startSearch => !startSearch)} 
+                        value={searchBar}
                     />
                     <Navbar.SearchBar
                         active={startSearch} 
-                        value={search}
-                        placeholder="Titles, People, Genres" onChange={({target}) => setSearch(target.value)}
+                        value={searchBar}
+                        placeholder="Titles, People, Genres" onChange={({target}) => setSearchBar(target.value)}
                     />
                     </Navbar.List>
                     <Navbar.List>
@@ -76,10 +78,10 @@ export default function MediaBanner() {
                 </Navbar.Container>
                 </Navbar.LinkWrapper>
             </Navbar>
-            <Header.DesciptionContainer>
-               <Header.Title> Watch Joker Now </Header.Title>
+            <Header.DesciptionContainer hide={ category }>
+               <Header.Title> AVA </Header.Title>
                <Header.Subtitle> 
-               Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a futile attempt to feel like he's part of the world around him. 
+               Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job as a clown,
                </Header.Subtitle>
                <Header.Group>
                     <Header.Button primary={primaryButton}>
@@ -92,6 +94,7 @@ export default function MediaBanner() {
                     </Header.Button>
                </Header.Group>
             </Header.DesciptionContainer>
+        </Header.Overlay>
         </Header>
     )
 }

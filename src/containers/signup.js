@@ -26,7 +26,6 @@ export default function SignupFormContainer() {
 
     const signupUser = (e) => {
         e.preventDefault();
-        console.log(email);
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then( res => res.user.updateProfile({
                 displayName: name,
