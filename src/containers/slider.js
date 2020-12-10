@@ -4,7 +4,6 @@ import CardContainer from './slider-card';
 
 export default function SliderContainer({ data }) {
     const {movies, series} = data;
-    const [ slideDirection, setDirection] = useState('')
    
     return (
             <Slider>

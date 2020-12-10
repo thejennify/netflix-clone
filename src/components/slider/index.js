@@ -41,7 +41,7 @@ Slider.IconRow = function SliderIconRow({ children, ...props}) {
 }
 
 Slider.Icon = function SliderIcon({ children, ...props}) {
-    return <Icon {...props} /> 
+    return <Icon {...props} > {children} </Icon>
 }
 
 Slider.Modal = function SliderModal({ children, ...props}) {

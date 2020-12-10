@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.section`
-    display: flex;
-    flex-direction: column;
-    margin: -150px 3em 0 3em;
+    margin-top: -150px;
+    width: 100vw;
     
     @media (max-width: 780px) {
-        margin: -5em 1em 0 1em;
-        overflow-y: hidden;
+        margin-top: -5rem;
     }
 `;
 
 export const Category = styled.h2`
     color: #fff;
     text-transform: capitalize;
+    padding-left: 3rem;
+
     @media (max-width: 600px) {
         font-size: 1rem;
     }
@@ -22,13 +22,15 @@ export const Category = styled.h2`
 
 export const Container = styled.div`
     display: flex;
-    width: 100vw;
+    padding: 0rem 3rem;
+
+    @media (max-width: 600px) {
+        padding: 0rem 1rem;
+    }
 `;
 
 export const Row = styled.div`
-    display: flex;
-    padding: 0;
-    margin: 0;
+    max-width: 100vw;
 
 `;
 
@@ -43,7 +45,7 @@ export const Modal = styled.div`
     padding: 0;
 
     @media (max-width: 600px) {
-        width: 300px;
+        width: 250px;
     }
      
 `;
@@ -55,7 +57,7 @@ export const ImageModal = styled.img`
     padding: 0;
 
     @media (max-width: 600px) {
-        width: 300px;
+        width: 250px;
     }
 `;
 
@@ -81,46 +83,64 @@ export const Card = styled.div`
 
 export const Image = styled.img`
     border-radius: 5px;
-    margin-left: 5px;
-    height: 150px;
+    margin-left: 10px;
+    height: 190px;
     cursor: pointer;
 
     @media (max-width: 600px) {
-        height: 120px;
+        height: 100px;
     }
 
 `;
 
 
 export const IconRow = styled.div`
-    display: flex;
-    justify-content: space-between;
-    max-height: 3em;
     align-items: center;
+    display: flex;
+    margin-bottom: .5em;
 `;
 
-//chnage to button!
-export const Icon = styled.img`
-    width: ${({border}) =>  ( border === 'false'? '2.7em' : '1.2em')};
-    padding: ${({border}) =>  ( border === 'false'? '0' : '.7em')};
-    color: #fff;
-    background-color: ${({border}) =>  ( border === 'false'? '' : 'rgba(211, 211, 211, .099)')};
-    border: ${({border}) =>  ( border === 'false'? '0' : '.1em solid #fff')};
+export const Icon = styled.button`
     border-radius: 50%;
-    margin-right: 1em;
+    margin-right: 1.5em;
+    cursor: pointer;
+    background-color:${({border}) =>  ( border === 'false'? 'transparent' : 'rgba(215, 211, 211, .09)')}; 
+    border:${({border}) =>  ( border === 'false'? 'none' : '.1em solid #fff')}; 
+    
+    img{
+        color: #fff;
+        border-radius: 50%;
+        margin: 0;
+        padding: 0;
+        padding: ${({border}) =>  ( border === 'false'? '' : '1em')}; 
+        display: block;
+        height: ${({border}) =>  ( border === 'false'? '4.2em' : '2em')}; 
+        width: ${({border}) =>  ( border === 'false'? '4.2em' : '2em')};
+    }
+
+    @media (max-width: 600px) {
+        display: none;
+    }
 `;
 
 export const MetaRow = styled.div`
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 
 `;
 
 export const Metadata = styled.p`
     margin-right: 1em;
-    color: ${({rating}) =>  ( rating === 'true'? 'green' : '#fff')};
-    border: ${({margin}) =>  ( margin === 'true'? '.5px solid #fff' : '0')};
-    padding: ${({margin}) =>  ( margin === 'true'? '.4em' : '0')};
+    color: ${({rating}) =>  ( rating === 'true'? '#46d369' : '#fff')};
+    border: ${({margin}) =>  ( margin === 'true'? '.1em solid #fff' : '0')};
+    padding: ${({margin}) =>  ( margin === 'true'? '0em .4em' : '0')};
+    font-weight: ${({rating}) =>  ( rating === 'true'? '600' : '400')};
+
+
+    @media (max-width: 600px) {
+       font-size: 13px;
+    }
 `;
 
 export const Mood = styled.div`

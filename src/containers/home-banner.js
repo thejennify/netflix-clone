@@ -1,8 +1,8 @@
 import React from 'react';
-import { Banner } from '../components/';
+import { Banner } from '../components';
 import  NewsletterContainer  from './newsletter';
 import  { useHistory } from "react-router-dom";
-import  { Navbar } from '../components/';
+import  { Navbar } from '../components';
 
 
 export  function BannerContainer() {

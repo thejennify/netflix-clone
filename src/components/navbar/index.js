@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { Wrapper, Container, Logo, Button, Select, Dropdown, SearchBar, ProfilePicture, DropdownIcon, Icon, SearchIcon, LinkModal, LinkWrapper, List, Link } from './styles/navbar';
+import { Wrapper, Container, Logo, Button, Select, Dropdown, SearchBar, SearchBarContainer, ProfilePicture, DropdownIcon, Icon, SearchIcon, LinkModal, LinkWrapper, List, Link } from './styles/navbar';
 const logo = 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg';
 
 
@@ -31,8 +31,15 @@ Navbar.SearchBar = function({children, ...props}) {
     return <SearchBar {...props}/> 
 }
 
+Navbar.SearchBarContainer = function({children, ...props}) {
+    return <SearchBarContainer {...props}> {children}</SearchBarContainer>
+}
+
+
 Navbar.SearchIcon = function({children, ...props}) {
-    return <SearchIcon {...props}/> 
+    return ( <SearchIcon {...props}> 
+        <img src='/images/icons/search.svg' alt='search'/> 
+     </SearchIcon>)
 }
 
 Navbar.ProfilePicture = function({children, ...props}) {
@@ -48,7 +55,7 @@ Navbar.Container = function({children, ...props}) {
 }
 
 Navbar.DropdownIcon = function({children, ...props}) {
-    return <DropdownIcon {...props} /> 
+    return <DropdownIcon {...props} ><img src='/images/icons/arrow_drop_down.svg' alt='settings' /> {children}  </DropdownIcon>
 }
 
 Navbar.Icon = function({children, ...props}) {

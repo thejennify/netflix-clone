@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Header } from '../components';
 import { Navbar } from '../components';
 import { useAuthListener } from '../hooks';
@@ -6,19 +6,28 @@ import { FirebaseContext } from '../context/firebase';
 
 export default function MediaBanner() {
 
-    const [navbar, setNavbar] = useState(null);
     const [searchBar, setSearchBar] = useState('');
     const [category, setCategory] = useState('');
+    const [hideIcon, setHideIcon] = useState(false)
     const [startSearch, setStartSearch] = useState('');
+    const [modal, setModal] = useState(false)
     const { user } = useAuthListener();
     const primaryButton = true;
     const { firebase } = useContext(FirebaseContext);
     let photoURL = user.photoURL;
     const profilePicture = `/images/users/${photoURL}.png`;
+    console.log(modal)
 
 
     const logout = () => {
          firebase.auth().signOut()
+    }
+    const toggleSearch = () => {
+        setHideIcon(!hideIcon) 
+        setStartSearch(startSearch => !startSearch)
+    }
+    const showModal =() => {
+        setModal(modal => !modal)
     }
 
     return (
@@ -26,7 +35,7 @@ export default function MediaBanner() {
             <Header.Overlay>
             <Navbar>
                 <Navbar.LinkWrapper>
-                <Navbar.Container>
+                <Navbar.Container display='none'>
                         <Navbar.List>
                             <Navbar.Link
                                 active={ category === '' ? true : false }
@@ -49,24 +58,31 @@ export default function MediaBanner() {
                 </Navbar.Container>
                 <Navbar.Container>
                     <Navbar.List>
-                    <Navbar.SearchIcon 
-                        active={searchBar} 
-                        src='/images/icons/search.svg' 
-                        onClick={() => setStartSearch(startSearch => !startSearch)} 
-                        value={searchBar}
-                    />
-                    <Navbar.SearchBar
-                        active={startSearch} 
-                        value={searchBar}
-                        placeholder="Titles, People, Genres" onChange={({target}) => setSearchBar(target.value)}
-                    />
+                        <Navbar.SearchIcon 
+                            hide={hideIcon}
+                            src='/images/icons/search.svg' 
+                            onClick={toggleSearch } 
+                            value={searchBar}
+                        />
+                        <Navbar.SearchBarContainer
+                            active={startSearch} >
+                            <Navbar.SearchIcon
+                                onClick={toggleSearch} 
+                                value={searchBar}
+                            />
+                            <Navbar.SearchBar 
+                                value={searchBar}
+                                placeholder="Titles, People, Genres" onChange={({target}) => setSearchBar(target.value)}
+                            />
+                        </Navbar.SearchBarContainer>
                     </Navbar.List>
                     <Navbar.List>
-                    <Navbar.LinkModal>
-                        <Navbar.ProfilePicture src={profilePicture}/>
-                        <Navbar.DropdownIcon src='/images/icons/arrow.svg'/>
-                            <Navbar.Dropdown>
+                    <Navbar.LinkModal >
+                        <Navbar.ProfilePicture src={profilePicture} alt='profile settings' onMouseOver={() => setModal(true)} />
+                        <Navbar.DropdownIcon onClick={showModal} />
+                            <Navbar.Dropdown modal={modal} onMouseOut={showModal}>
                                 <Navbar.Select>
+                                <img src={profilePicture}/>
                                 {user.displayName}
                                 </Navbar.Select>
                                 <Navbar.Select onClick={logout}>
@@ -81,15 +97,15 @@ export default function MediaBanner() {
             <Header.DesciptionContainer hide={ category }>
                <Header.Title> AVA </Header.Title>
                <Header.Subtitle> 
-               Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job as a clown,
+               Ava is a deadly assassin who works for a black ops organization, traveling the globe specializing in high profile hits. When a job goes dangerously wrong she is forced to fight for her own survival.
                </Header.Subtitle>
                <Header.Group>
                     <Header.Button primary={primaryButton}>
-                    <Navbar.Icon src='/images/icons/arrow.svg'/>
+                    <Navbar.Icon src='/images/icons/arrow.svg' alt='Play'/>
                     Play
                     </Header.Button>
                     <Header.Button primary={!primaryButton}>
-                    <Navbar.Icon src='/images/icons/info.svg'/>
+                    <Navbar.Icon src='/images/icons/info.svg' alt='More info'/>
                     More Info
                     </Header.Button>
                </Header.Group>

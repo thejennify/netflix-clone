@@ -7,13 +7,10 @@ export default function Modal({data}) {
             <Slider.ImageModal src={`/images/movies/${data.genre}/${data.slug}/large.jpg`}/>
             <Slider.MetaContainer>
                 <Slider.IconRow>
-                    <div>
-                        <Slider.Icon border='false' src='/images/icons/arrow.svg' />
-                        <Slider.Icon src='/images/icons/add.png' />
-                        <Slider.Icon src='/images/icons/thumbs-up.svg' />
-                        <Slider.Icon src='/images/icons/thumbs-down.svg' />
-                    </div>
-                    <Slider.Icon src='/images/icons/thumbs-down.svg'/>
+                        <Slider.Icon border='false'> <img src='/images/icons/arrow.svg' alt='play'/></Slider.Icon> 
+                        <Slider.Icon > <img src='/images/icons/add.png' alt='add'/></Slider.Icon> 
+                        <Slider.Icon > <img src='/images/icons/thumbs-up.svg' alt='like'/></Slider.Icon> 
+                        <Slider.Icon > <img src='/images/icons/thumbs-down.svg' alt='dislike'/></Slider.Icon> 
                 </Slider.IconRow>
                 <Slider.MetaRow>
                     <Slider.Metadata rating='true'> 

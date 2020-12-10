@@ -2,12 +2,14 @@ import styled from 'styled-components';
 
 export const Background = styled.section`
     background-image: ${({hide}) => (hide ? '' : 'url(/images/misc/banner.jpg)')};
-    height: ${({hide}) => (hide ? '40vh' : '100%')};
+    height: ${({hide}) => (hide ? '35vh' : '100%')};
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 0;
     width: 100%;
     box-shadow: 0px 0px 100px 0px #000;
+    background-color: ${({hide}) => (hide ? '' : '')};
+
     @media (max-width: 600px) {
         height: 35vh;
     }
@@ -15,7 +17,7 @@ export const Background = styled.section`
 `;
 export const Overlay = styled.div`
     background: linear-gradient(0deg, rgba(0,0,0,0.7833508403361344) 0%, rgba(0,0,0,0.19791666666666663) 100%);
-
+    
     @media (max-width: 600px) {
         height: 35vh;
     }
@@ -27,7 +29,7 @@ export const DescriptionContainer = styled.div`
     max-width: 40%;
     @media (max-width: 600px) {
         max-width: 50vw;
-        padding: 1em ;
+        padding: 0em 1em ;
     }
 `;
 
